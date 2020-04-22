@@ -43,7 +43,7 @@ class Controller:
 
         total = 0
         for number in fixedInput:
-            total += int(number)
+            total += float(number)
 
         if total == 100:
             return
