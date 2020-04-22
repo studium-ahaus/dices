@@ -1,1 +1,4 @@
-# 🎲 dices
+## 🎲 dices
+
+This program rolls `n` biased dices with custom probabilities.  
+It then calculates the average value and the standard deviation using the gathered values.
