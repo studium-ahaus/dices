@@ -1,21 +1,6 @@
 import math
 
 
-class Result:
-    standardDeviation = 0
-    average = 0
-
-    def __init__(self, deviation, avg):
-        self.standardDeviation = deviation
-        self.average = avg
-
-    def getStandardDeviation(self):
-        return self.standardDeviation
-
-    def getAverage(self):
-        return self.average
-
-
 class Calculator:
     res = None
 
@@ -44,3 +29,18 @@ class Calculator:
 
     def getResult(self):
         return self.res
+
+
+class Result:
+    standardDeviation = 0
+    average = 0
+
+    def __init__(self, deviation, avg):
+        self.standardDeviation = deviation
+        self.average = avg
+
+    def getStandardDeviation(self):
+        return self.standardDeviation
+
+    def getAverage(self):
+        return self.average
