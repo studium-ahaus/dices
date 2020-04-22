@@ -19,7 +19,6 @@ class Controller:
         diceData = input("Please enter dice probabilities: ")
         diceData = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
-        diceData = diceData
 
         throwCount = input("Please enter a throw count: ")
 
