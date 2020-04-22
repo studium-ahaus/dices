@@ -43,7 +43,7 @@ class Controller:
             total += float(number)
 
         if total != 100:
-            raise Warning('The sum probabilities has to be 100')
+            raise Warning('The sum of probabilities has to be 100')
 
     def __getDiceResults(self, data):
         return DiceSet().roll(data)
