@@ -1,7 +1,5 @@
 import math
 
-import random
-
 
 class Result:
     standardDeviation = 0
@@ -16,22 +14,6 @@ class Result:
 
     def getAverage(self):
         return self.average
-
-
-class Sample:
-    lst = []
-    count = 0
-
-    def __init__(self):
-        self.count = 1000000
-        for i in range(self.count):
-            self.lst.append(random.randint(1, 6))
-
-    def throwCount(self):
-        return self.count
-
-    def throwResult(self):
-        return self.lst
 
 
 class Calculator:
