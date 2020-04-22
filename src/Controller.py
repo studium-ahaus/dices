@@ -16,6 +16,8 @@ class Controller:
             print('Average: ' + str(calResults.getAverage()))
         except Warning as warning:
             print(str(warning))
+        except KeyboardInterrupt:
+            print('')
 
     def __fetchInput(self):
         print('Index schema: 1, 2, 3, 4, 5, 6')
