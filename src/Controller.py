@@ -1,3 +1,4 @@
+from src.Calculator import Calculator
 from src.DiceSet import DiceSet
 
 
@@ -8,8 +9,11 @@ class Controller:
     def run(self):
         try:
             data = self.__fetchInput()
-            results = self.__getDiceResults(data)
-            print(results)
+            diceResults = self.__getDiceResults(data)
+            calResults = Calculator(diceResults).getResult()
+
+            print('Standard deviation: ' + str(calResults.getStandardDeviation()))
+            print('Average: ' + str(calResults.getAverage()))
         except Warning as warning:
             print(str(warning))
 
