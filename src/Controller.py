@@ -35,17 +35,15 @@ class Controller:
             .split(',')
 
     def __validateDiceData(self, fixedInput):
-        if len(fixedInput) == 6:
-            return
+        if len(fixedInput) != 6:
+            raise Warning('Please enter probabilities')
 
         total = 0
         for number in fixedInput:
             total += float(number)
 
-        if total == 100:
-            return
-
-        raise Warning('Invalid input')
+        if total != 100:
+            raise Warning('The sum probabilities has to be 100')
 
     def __getDiceResults(self, data):
         return DiceSet().roll(data)
