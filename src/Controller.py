@@ -3,9 +3,6 @@ from src.DiceSet import DiceSet
 
 
 class Controller:
-    def __init__(self):
-        pass
-
     def run(self):
         try:
             data = self.__fetchInput()
