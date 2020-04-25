@@ -1,5 +1,6 @@
 from src.Calculator import Calculator
 from src.DiceSet import DiceSet
+from src.Plotter import Plotter
 
 
 class Controller:
@@ -11,6 +12,7 @@ class Controller:
 
             print('Standard deviation: ' + str(calResults.getStandardDeviation()))
             print('Average: ' + str(calResults.getAverage()))
+            Plotter().plot(diceResults)
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
@@ -24,6 +26,7 @@ class Controller:
         self.__validateDiceData(diceData)
 
         throwCount = input("Please enter a throw count: ")
+        throwCount = int(throwCount)
 
         return [diceData, throwCount]
 
@@ -36,7 +39,7 @@ class Controller:
 
     def __validateDiceData(self, fixedInput):
         if len(fixedInput) != 6:
-            raise Warning('Please enter probabilities')
+            raise Warning('Please enter all probabilities')
 
         total = 0
         for number in fixedInput:
