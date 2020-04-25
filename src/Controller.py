@@ -25,7 +25,8 @@ class Controller:
         diceData = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
 
-        throwCount = int(input("Please enter a throw count: "))
+        throwCount = input("Please enter a throw count: ")
+        throwCount = int(throwCount)
 
         return [diceData, throwCount]
 
@@ -38,7 +39,7 @@ class Controller:
 
     def __validateDiceData(self, fixedInput):
         if len(fixedInput) != 6:
-            raise Warning('Please enter probabilities')
+            raise Warning('Please enter all probabilities')
 
         total = 0
         for number in fixedInput:
