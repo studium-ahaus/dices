@@ -1,5 +1,6 @@
 from src.Calculator import Calculator
 from src.DiceSet import DiceSet
+from src.Plotter import Plotter
 
 
 class Controller:
@@ -11,6 +12,7 @@ class Controller:
 
             print('Standard deviation: ' + str(calResults.getStandardDeviation()))
             print('Average: ' + str(calResults.getAverage()))
+            Plotter().plot(diceResults)
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
@@ -23,7 +25,7 @@ class Controller:
         diceData = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
 
-        throwCount = input("Please enter a throw count: ")
+        throwCount = int(input("Please enter a throw count: "))
 
         return [diceData, throwCount]
 
