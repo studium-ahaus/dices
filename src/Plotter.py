@@ -8,7 +8,7 @@ class Plotter:
         maxWidth = shutil.get_terminal_size().columns - 20
 
         if maxWidth <= 10:
-            raise Warning("Terminal-window to small")
+            raise Warning("Terminal-window too small")
 
         print("Visual representation:")
         print("=" * 100)
