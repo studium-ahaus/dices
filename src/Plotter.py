@@ -12,6 +12,7 @@ class Plotter:
 
         print("Visual representation:")
         print("=" * 100)
+
         for i in range(1, 7):
             percentage = 100 * diceList[i - 1] / totalThrows
             bar = "#" * int(100 * diceList[i - 1] / totalThrows)
