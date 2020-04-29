@@ -7,7 +7,7 @@ class DiceSet:
         diceData = data[0]
         results = []
 
-        for i in range(throwCount):
+        for _ in range(throwCount):
             total = 0
             roll = random.random()
             possibleResult = 1
