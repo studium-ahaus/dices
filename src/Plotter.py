@@ -1,5 +1,4 @@
 # zu testzwecken noch vorhanden
-import random
 import shutil
 
 import matplotlib.pyplot as plt
@@ -85,23 +84,24 @@ class Plotter:
 
         return result
 
-
 # zu testzwecken noch vorhanden
-p = Plotter()
+# p = Plotter()
 
-lst = []
-throwCount = 100000
-for i in range(throwCount):
-    tmp = []
-    for _ in range(6):
-        tmp.append(random.randint(1, 6))
-    lst.append(tmp)
+# lst = []
+# throwCount = 100000
+# for i in range(throwCount):
+# tmp = []
+# for _ in range(6):
+# tmp.append(random.randint(1, 6))
+# lst.append(tmp)
+
+# print(lst)
 
 # Mittelwert bestimmen
-average = sum([sum(item) for item in lst]) / len(lst)
+# average = sum([sum(item) for item in lst]) / len(lst)
 
 # Standardabweichung bestimmen
-deviation = np.sqrt(sum([(sum(item) - average) ** 2 for item in lst]) / (throwCount - 1))
+# deviation = np.sqrt(sum([(sum(item) - average) ** 2 for item in lst]) / (throwCount - 1))
 
 # als Diagramm mit matplotlib plotten
-p.plotAsDiagram(lst, average, deviation, True)
+# p.plotAsDiagram(lst, average, deviation, True)

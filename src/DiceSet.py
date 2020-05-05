@@ -3,11 +3,22 @@ import random
 
 class DiceSet:
     def roll(self, data):
-        throwCount = data[1]
+        throwCount = data[2]
+        diceCount = data[1]
         diceData = data[0]
+
         results = []
 
         for _ in range(throwCount):
+            results.append(
+                self.__rollDice(diceCount, diceData))
+
+        return results
+
+    def __rollDice(self, diceCount, diceData):
+        results = []
+
+        for _ in range(diceCount):
             total = 0
             roll = random.random()
             possibleResult = 1

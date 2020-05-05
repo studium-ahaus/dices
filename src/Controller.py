@@ -1,6 +1,4 @@
-from src.Calculator import Calculator
 from src.DiceSet import DiceSet
-from src.Plotter import Plotter
 
 
 class Controller:
@@ -8,11 +6,12 @@ class Controller:
         try:
             data = self.__fetchInput()
             diceResults = self.__getDiceResults(data)
-            calResults = Calculator(diceResults).getResult()
+            print(diceResults)
+            # calResults = Calculator(diceResults).getResult()
 
-            print('Standard deviation: ' + str(calResults.getStandardDeviation()))
-            print('Average: ' + str(calResults.getAverage()))
-            Plotter().plot(diceResults)
+            # print('Standard deviation: ' + str(calResults.getStandardDeviation()))
+            # print('Average: ' + str(calResults.getAverage()))
+            # Plotter().plot(diceResults)
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
@@ -25,10 +24,13 @@ class Controller:
         diceData = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
 
+        diceCount = input("Please enter a dice count: ")
+        diceCount = int(diceCount)
+
         throwCount = input("Please enter a throw count: ")
         throwCount = int(throwCount)
 
-        return [diceData, throwCount]
+        return [diceData, diceCount, throwCount]
 
     def __fixDiceData(self, diceData):
         return str(diceData) \
