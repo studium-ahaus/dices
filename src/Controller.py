@@ -40,7 +40,7 @@ class Controller:
 
     def __validateDiceData(self, fixedInput: List):
         if len(fixedInput) != 6:
-            raise Warning('Please enter all probabilities')
+            raise Warning('Please enter exactly 6 probabilities')
 
         total: float = 0
         for number in fixedInput:
