@@ -1,6 +1,7 @@
 from typing import List
 
 from src.DiceSet import DiceSet
+from src.Plotter import Plotter
 
 
 class Controller:
@@ -8,12 +9,8 @@ class Controller:
         try:
             data: List = self.__fetchInput()
             diceResults: List = self.__getDiceResults(data)
-            print(diceResults)
-            # calResults = Calculator(diceResults).getResult()
 
-            # print('Standard deviation: ' + str(calResults.getStandardDeviation()))
-            # print('Average: ' + str(calResults.getAverage()))
-            # Plotter().plot(diceResults)
+            Plotter().plot(diceResults, data[2])
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
