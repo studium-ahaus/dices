@@ -3,7 +3,7 @@ from typing import List
 
 
 class DiceSet:
-    def roll(self, data: List):
+    def roll(self, data: List) -> List:
         throwCount: int = data[2]
         diceCount: int = data[1]
         diceData: List = data[0]
@@ -16,7 +16,7 @@ class DiceSet:
 
         return results
 
-    def __rollDice(self, diceCount: int, diceData: List):
+    def __rollDice(self, diceCount: int, diceData: List) -> List:
         results: List = []
 
         for _ in range(diceCount):

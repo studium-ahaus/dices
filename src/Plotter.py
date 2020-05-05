@@ -14,12 +14,12 @@ class Plotter:
 
         self.plotAsDiagram(diceList, average, deviation)
 
-    def __getAverage(self, diceList: List):
+    def __getAverage(self, diceList: List) -> float:
         return sum(
             [sum(item) for item in diceList]
         ) / len(diceList)
 
-    def __getStandardDeviation(self, average: float, diceList: List, throwCount: int):
+    def __getStandardDeviation(self, average: float, diceList: List, throwCount: int) -> float:
         return np.sqrt(
             sum(
                 [(sum(item) - average) ** 2 for item in diceList])
@@ -49,7 +49,7 @@ class Plotter:
         plt.savefig("plot")
         plt.show()
 
-    def __calculateGaussCurve(self, iterator: np.ndarray, mu: float, sigma: float):
+    def __calculateGaussCurve(self, iterator: np.ndarray, mu: float, sigma: float) -> List:
         lst: List = [0] * len(iterator)
 
         for i in range(1, len(iterator) + 1):
@@ -60,7 +60,7 @@ class Plotter:
 
         return lst
 
-    def __convertListForDiagram(self, diceList: List):
+    def __convertListForDiagram(self, diceList: List) -> List:
         tmpList: List = []
 
         for i in diceList:

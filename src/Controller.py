@@ -16,7 +16,7 @@ class Controller:
         except KeyboardInterrupt:
             print('')
 
-    def __fetchInput(self):
+    def __fetchInput(self) -> List:
         print('Index schema: 1, 2, 3, 4, 5, 6')
 
         diceData: str = input("Please enter dice probabilities: ")
@@ -31,7 +31,7 @@ class Controller:
 
         return [diceData, diceCount, throwCount]
 
-    def __fixDiceData(self, diceData: str):
+    def __fixDiceData(self, diceData: str) -> List:
         return str(diceData) \
             .replace(' ', '') \
             .replace('(', '') \
@@ -49,5 +49,5 @@ class Controller:
         if total != 100:
             raise Warning('The sum of probabilities has to be 100')
 
-    def __getDiceResults(self, data: List):
+    def __getDiceResults(self, data: List) -> List:
         return DiceSet().roll(data)
