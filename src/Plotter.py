@@ -46,7 +46,6 @@ class Plotter:
                  [100 * i / len(diceList) for i in self.__convertListForDiagram(diceList)],
                  'ro', lst, gauss)
 
-        plt.savefig("plot")
         plt.show()
 
     def __calculateGaussCurve(self, iterator: np.ndarray, mu: float, sigma: float) -> List:
