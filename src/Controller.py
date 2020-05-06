@@ -1,4 +1,5 @@
-from src.Calculator import Calculator
+from typing import List
+
 from src.DiceSet import DiceSet
 from src.Plotter import Plotter
 
@@ -6,47 +7,47 @@ from src.Plotter import Plotter
 class Controller:
     def run(self):
         try:
-            data = self.__fetchInput()
-            diceResults = self.__getDiceResults(data)
-            calResults = Calculator(diceResults).getResult()
+            data: List = self.__fetchInput()
+            diceResults: List = self.__getDiceResults(data)
 
-            print('Standard deviation: ' + str(calResults.getStandardDeviation()))
-            print('Average: ' + str(calResults.getAverage()))
-            Plotter().plot(diceResults)
+            Plotter().plot(diceResults, data[2])
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
             print('')
 
-    def __fetchInput(self):
+    def __fetchInput(self) -> List:
         print('Index schema: 1, 2, 3, 4, 5, 6')
 
-        diceData = input("Please enter dice probabilities: ")
-        diceData = self.__fixDiceData(diceData)
+        diceData: str = input("Please enter dice probabilities: ")
+        diceData: List = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
 
-        throwCount = input("Please enter a throw count: ")
-        throwCount = int(throwCount)
+        diceCount: str = input("Please enter a dice count: ")
+        diceCount: int = int(diceCount)
 
-        return [diceData, throwCount]
+        throwCount: str = input("Please enter a throw count: ")
+        throwCount: int = int(throwCount)
 
-    def __fixDiceData(self, diceData):
+        return [diceData, diceCount, throwCount]
+
+    def __fixDiceData(self, diceData: str) -> List:
         return str(diceData) \
             .replace(' ', '') \
             .replace('(', '') \
             .replace(')', '') \
             .split(',')
 
-    def __validateDiceData(self, fixedInput):
+    def __validateDiceData(self, fixedInput: List):
         if len(fixedInput) != 6:
-            raise Warning('Please enter all probabilities')
+            raise Warning('Please enter exactly 6 probabilities')
 
-        total = 0
+        total: float = 0
         for number in fixedInput:
             total += float(number)
 
         if total != 100:
             raise Warning('The sum of probabilities has to be 100')
 
-    def __getDiceResults(self, data):
+    def __getDiceResults(self, data: List) -> List:
         return DiceSet().roll(data)

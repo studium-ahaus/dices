@@ -1,19 +1,31 @@
 import random
+from typing import List
 
 
 class DiceSet:
-    def roll(self, data):
-        throwCount = data[1]
-        diceData = data[0]
-        results = []
+    def roll(self, data: List) -> List:
+        throwCount: int = data[2]
+        diceCount: int = data[1]
+        diceData: List = data[0]
+
+        results: List = []
 
         for _ in range(throwCount):
-            total = 0
-            roll = random.random()
-            possibleResult = 1
+            results.append(
+                self.__rollDice(diceCount, diceData))
+
+        return results
+
+    def __rollDice(self, diceCount: int, diceData: List) -> List:
+        results: List = []
+
+        for _ in range(diceCount):
+            total: float = 0
+            roll: float = random.random()
+            possibleResult: int = 1
 
             for chance in diceData:
-                chance = float(chance) / 100
+                chance: float = float(chance) / 100
                 total += chance
 
                 if roll < total:
