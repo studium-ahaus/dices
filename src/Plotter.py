@@ -3,14 +3,23 @@ from typing import List
 import matplotlib.pyplot as plt
 import numpy as np
 
+from src.Printer import Printer
+
 
 class Plotter:
+    __printer: Printer
+
+    def __init__(self, printer: Printer):
+        self.__printer = printer
+
     def plot(self, diceList: List, throwCount: int):
         average: float = self.__getAverage(diceList)
         print('Average: ' + str(average))
+        self.__printer.setAverage(average)
 
         deviation: float = self.__getStandardDeviation(average, diceList, throwCount)
         print('Standard deviation: ' + str(deviation))
+        self.__printer.setDeviation(deviation)
 
         self.plotAsDiagram(diceList, average, deviation)
 
