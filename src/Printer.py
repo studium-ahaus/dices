@@ -35,7 +35,7 @@ class Printer:
         logFile: str = outFolder + 'output.csv'
         isFile: bool = os.path.isfile(logFile)
 
-        with open(logFile, 'a') as csvFile:
+        with open(logFile, 'a', newline='') as csvFile:
             if not isFile:
                 self.__writeToNewFile(csvFile)
             else:
