@@ -24,11 +24,16 @@ class Plotter:
         self.plotAsDiagram(diceList, average, deviation)
 
     def __getAverage(self, diceList: List) -> float:
+        if len(diceList) == 0:
+            raise Warning("No throw-results given. Dicelist shall not be empty.")
         return sum(
             [sum(item) for item in diceList]
         ) / len(diceList)
 
     def __getStandardDeviation(self, average: float, diceList: List, throwCount: int) -> float:
+        if throwCount == 1:
+            return 0
+            # raise Warning("Divide by zero detected. No standarddeviation given if throwCount == 1.")
         return np.sqrt(
             sum(
                 [(sum(item) - average) ** 2 for item in diceList])
@@ -36,20 +41,27 @@ class Plotter:
         )
 
     def plotAsDiagram(self, diceList: List, avg: float, dev: float):
-        lst: np.ndarray = np.arange(0, len(diceList[0]) * 6, 0.001)
-        gauss: List = self.__calculateGaussCurve(lst, avg, dev)
+        if len(diceList) == 0:
+            raise Warning("No throw-results given. Dicelist shall not be empty.")
 
         plt.xlabel("Eye-sum")
         plt.ylabel("Probability")
         plt.grid(True)
 
-        colors: List = ['r', 'c', 'b', 'g']
-        colors += list(reversed(colors))
+        lst: np.ndarray = np.arange(0,1)
+        print(lst)
+        gauss: List = [0]
+        if dev != 0:
+            lst: np.ndarray = np.arange(0, len(diceList[0]) * 6, 0.001)
+            gauss: List = self.__calculateGaussCurve(lst, avg, dev)
 
-        for i, color in zip(range(-4, 4), colors):
-            plt.fill_between(lst, gauss,
-                             where=np.logical_and(lst <= avg - (i * dev),
-                                                  lst >= avg - ((i + 1) * dev)), facecolor=color, alpha=0.5)
+            colors: List = ['r', 'c', 'b', 'g']
+            colors += list(reversed(colors))
+
+            for i, color in zip(range(-4, 4), colors):
+                plt.fill_between(lst, gauss,
+                                where=np.logical_and(lst <= avg - (i * dev),
+                                                    lst >= avg - ((i + 1) * dev)), facecolor=color, alpha=0.5)
 
         plt.plot(range(1, len(diceList[0]) * 6 + 1),
                  [100 * i / len(diceList) for i in self.__convertListForDiagram(diceList)],
