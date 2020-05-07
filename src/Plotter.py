@@ -33,7 +33,6 @@ class Plotter:
     def __getStandardDeviation(self, average: float, diceList: List, throwCount: int) -> float:
         if throwCount == 1:
             return 0
-            # raise Warning("Divide by zero detected. No standarddeviation given if throwCount == 1.")
         return np.sqrt(
             sum(
                 [(sum(item) - average) ** 2 for item in diceList])
@@ -41,16 +40,13 @@ class Plotter:
         )
 
     def plotAsDiagram(self, diceList: List, avg: float, dev: float):
-        if len(diceList) == 0:
-            raise Warning("No throw-results given. Dicelist shall not be empty.")
-
         plt.xlabel("Eye-sum")
         plt.ylabel("Probability")
         plt.grid(True)
 
-        lst: np.ndarray = np.arange(0,1)
-        print(lst)
+        lst: np.ndarray = np.arange(0, 1)
         gauss: List = [0]
+
         if dev != 0:
             lst: np.ndarray = np.arange(0, len(diceList[0]) * 6, 0.001)
             gauss: List = self.__calculateGaussCurve(lst, avg, dev)
@@ -60,8 +56,8 @@ class Plotter:
 
             for i, color in zip(range(-4, 4), colors):
                 plt.fill_between(lst, gauss,
-                                where=np.logical_and(lst <= avg - (i * dev),
-                                                    lst >= avg - ((i + 1) * dev)), facecolor=color, alpha=0.5)
+                                 where=np.logical_and(lst <= avg - (i * dev),
+                                                      lst >= avg - ((i + 1) * dev)), facecolor=color, alpha=0.5)
 
         plt.plot(range(1, len(diceList[0]) * 6 + 1),
                  [100 * i / len(diceList) for i in self.__convertListForDiagram(diceList)],
