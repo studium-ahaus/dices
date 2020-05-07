@@ -2,15 +2,21 @@ from typing import List
 
 from src.DiceSet import DiceSet
 from src.Plotter import Plotter
+from src.Printer import Printer
 
 
 class Controller:
+    __printer: Printer
+
     def run(self):
         try:
+            self.__printer: Printer = Printer()
+
             data: List = self.__fetchInput()
             diceResults: List = self.__getDiceResults(data)
 
-            Plotter().plot(diceResults, data[2])
+            Plotter(self.__printer).plot(diceResults, data[2])
+            self.__printer.print()
         except Warning as warning:
             print(str(warning))
         except KeyboardInterrupt:
@@ -22,12 +28,15 @@ class Controller:
         diceData: str = input("Please enter dice probabilities: ")
         diceData: List = self.__fixDiceData(diceData)
         self.__validateDiceData(diceData)
+        self.__printer.setProbabilities(diceData)
 
         diceCount: str = input("Please enter a dice count: ")
         diceCount: int = int(diceCount)
+        self.__printer.setDiceCount(diceCount)
 
         throwCount: str = input("Please enter a throw count: ")
         throwCount: int = int(throwCount)
+        self.__printer.setThrowCount(throwCount)
 
         return [diceData, diceCount, throwCount]
 
