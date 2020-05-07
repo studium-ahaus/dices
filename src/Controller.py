@@ -32,10 +32,12 @@ class Controller:
 
         diceCount: str = input("Please enter a dice count: ")
         diceCount: int = int(diceCount)
+        self.__validateCount(diceCount)
         self.__printer.setDiceCount(diceCount)
 
         throwCount: str = input("Please enter a throw count: ")
         throwCount: int = int(throwCount)
+        self.__validateCount(throwCount)
         self.__printer.setThrowCount(throwCount)
 
         return [diceData, diceCount, throwCount]
@@ -57,6 +59,10 @@ class Controller:
 
         if total != 100:
             raise Warning('The sum of probabilities has to be 100')
+
+    def __validateCount(self, count: int):
+        if count <= 0:
+            raise Warning('A count cannot be lower than 1')
 
     def __getDiceResults(self, data: List) -> List:
         return DiceSet().roll(data)
