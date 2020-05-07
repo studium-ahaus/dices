@@ -50,22 +50,28 @@ class Printer:
 
     def __writeToNewFile(self, csvFile: TextIO):
         fieldnames: List = ['entryDate', 'probabilities', 'diceCount', 'throwCount', 'average', 'deviation']
-        writer: csv.DictWriter = csv.DictWriter(csvFile, fieldnames=fieldnames)
+        writer: csv.DictWriter = csv.DictWriter(csvFile, fieldnames=fieldnames, delimiter=';')
 
         writer.writeheader()
         writer.writerow({
             'entryDate': str(datetime.now()),
             'probabilities': str(self.__probabilities),
-            'diceCount': self.__diceCount,
-            'throwCount': self.__throwCount,
-            'average': self.__average,
-            'deviation': self.__deviation
+            'diceCount': self.__numToString(self.__diceCount),
+            'throwCount': self.__numToString(self.__throwCount),
+            'average': self.__numToString(self.__average),
+            'deviation': self.__numToString(self.__deviation)
         })
+
+    def __numToString(self, num):
+        return str(num).replace('.', ',')
 
     def __appendEntries(self, csvFile: TextIO):
         writer: csv.writer = csv.writer(csvFile)
         writer.writerow([
-            str(datetime.now()), str(self.__probabilities),
-            self.__diceCount, self.__throwCount,
-            self.__average, self.__deviation
+            str(datetime.now()),
+            str(self.__probabilities),
+            self.__numToString(self.__diceCount),
+            self.__numToString(self.__throwCount),
+            self.__numToString(self.__average),
+            self.__numToString(self.__deviation)
         ])
