@@ -13,7 +13,7 @@ Numpy:
 
 ## 🚀 How to use
 #### 1. Download the latest release
-Download the latest release zip [here](https://github.com/studium-ahaus/dices/releases)
+Download the latest release binary [here](https://github.com/studium-ahaus/dices/releases)
 
 #### 2. Run the program
 Run the program using the command ```python dices.zip```.
