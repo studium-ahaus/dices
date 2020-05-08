@@ -11,12 +11,15 @@ Mathplotlib:
 Numpy:   
 `python -m pip install numpy`
 
+Art:
+`python -m pip install art`
+
 ## 🚀 How to use
 #### 1. Download the latest release
-Download the latest release [here](https://github.com/studium-ahaus/dices/releases)
+Download the latest release binary [here](https://github.com/studium-ahaus/dices/releases)
 
 #### 2. Run the program
-Run the program using the command ```python run.py```.
+Run the program using the command ```python dices.zip```.
 Continue to configure and submit the wanted settings.
 After submitting, the calculated results will be put out to the console and graph.
 

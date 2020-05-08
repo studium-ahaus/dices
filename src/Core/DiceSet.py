@@ -4,6 +4,8 @@ from typing import List
 
 class DiceSet:
     def roll(self, data: List) -> List:
+        print('✨ Rolling dices')
+
         throwCount: int = data[2]
         diceCount: int = data[1]
         diceData: List = data[0]
