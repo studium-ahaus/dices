@@ -23,7 +23,7 @@ After submitting, the calculated results will be put out to the console and grap
 ## 🔥 Problems
 <strong>Case 1:</strong>  
 🚨 You found a bug and you want to fix it.  
-✨ Fork the project and create a pull request.  
+✨ Commit ur changes on a feature branch and create a pull request.  
 
 <strong>Case 2:</strong>  
 🚨 You found a bug and you don't want to fix it.  
