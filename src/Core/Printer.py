@@ -27,9 +27,9 @@ class Printer:
         self.__deviation = deviation
 
     def print(self) -> None:
-        thisFile: str = os.path.dirname(os.path.realpath(__file__))
+        thisDir: str = os.path.dirname(os.path.realpath(__file__))
 
-        outFolder: str = thisFile + '/../out/'
+        outFolder: str = thisDir + '/../out/'
         self.__createOutFolder(outFolder)
 
         logFile: str = outFolder + 'output.csv'
