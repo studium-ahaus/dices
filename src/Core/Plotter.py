@@ -3,7 +3,7 @@ from typing import List
 import matplotlib.pyplot as plt
 import numpy as np
 
-from src.Printer import Printer
+from Core import Printer
 
 
 class Plotter:

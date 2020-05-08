@@ -1,8 +1,8 @@
 from typing import List
 
-from src.DiceSet import DiceSet
-from src.Plotter import Plotter
-from src.Printer import Printer
+from Core.DiceSet import DiceSet
+from Core.Plotter import Plotter
+from Core.Printer import Printer
 
 
 class Controller:
