@@ -19,8 +19,8 @@ Art:
 Download the latest release binary [here](https://github.com/studium-ahaus/dices/releases)
 
 #### 2. Run the program
-Run the program using the command ```python dices.zip```.
-Continue to configure and submit the wanted settings.
+Run the program using the command ```python dices.zip```.  
+Continue to configure and submit the wanted settings.  
 After submitting, the calculated results will be put out to the console and graph.
 
 ## 🔥 Problems
