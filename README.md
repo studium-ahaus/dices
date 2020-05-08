@@ -1,6 +1,6 @@
 ## 🎲 dices
 
-This program rolls `n` biased dices with `custom` probabilities `n` times.  
+This program concurrently rolls `n` biased dices `m` times.  
 It then calculates the average value and the standard deviation using the gathered values.
 The statistics will be visualized in a graph and saved to a csv log in ```out/output.csv```.
 
