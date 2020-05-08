@@ -30,11 +30,12 @@ class Printer:
         thisDir: str = os.path.dirname(os.path.realpath(__file__))
 
         if "build" in thisDir:
-            outFolder: str = thisDir + '/../../../out/'
+            outFolder: str = thisDir \
+                .replace('build/dices', 'out/') \
+                .replace('.zip', '') \
+                .replace('/Core', '')
         else:
             outFolder: str = thisDir + '/../../out/'
-
-        print(outFolder)
 
         self.__createOutFolder(outFolder)
 
