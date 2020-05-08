@@ -11,7 +11,7 @@ Mathplotlib:
 Numpy:   
 `python -m pip install numpy`
 
-Art:
+Art:  
 `python -m pip install art`
 
 ## 🚀 How to use
