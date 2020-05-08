@@ -29,7 +29,13 @@ class Printer:
     def print(self) -> None:
         thisDir: str = os.path.dirname(os.path.realpath(__file__))
 
-        outFolder: str = thisDir + '/../out/'
+        if "build" in thisDir:
+            outFolder: str = thisDir + '/../../../out/'
+        else:
+            outFolder: str = thisDir + '/../../out/'
+
+        print(outFolder)
+
         self.__createOutFolder(outFolder)
 
         logFile: str = outFolder + 'output.csv'
