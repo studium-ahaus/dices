@@ -11,6 +11,9 @@ Mathplotlib:
 Numpy:   
 `python -m pip install numpy`
 
+Art:
+`python -m pip install art`
+
 ## 🚀 How to use
 #### 1. Download the latest release
 Download the latest release binary [here](https://github.com/studium-ahaus/dices/releases)

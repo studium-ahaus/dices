@@ -9,16 +9,20 @@ from Core import Printer
 class Plotter:
     __printer: Printer
 
-    def __init__(self, printer: Printer):
+    def __init__(self, printer: Printer) -> None:
         self.__printer = printer
 
-    def plot(self, diceList: List, throwCount: int):
+    def plot(self, diceList: List, throwCount: int) -> None:
+        print('✨ Calculating statistics')
+        print('')
+
         average: float = self.__getAverage(diceList)
-        print('Average: ' + str(average))
+        print('Average: \033[95m\033[1m' + str(average) + '\033[0m')
         self.__printer.setAverage(average)
 
         deviation: float = self.__getStandardDeviation(average, diceList, throwCount)
-        print('Standard deviation: ' + str(deviation))
+        print('Standard deviation: \033[95m\033[1m' + str(deviation) + '\033[0m')
+        print('')
         self.__printer.setDeviation(deviation)
 
         self.plotAsDiagram(diceList, average, deviation)
@@ -39,7 +43,7 @@ class Plotter:
             / (throwCount - 1)
         )
 
-    def plotAsDiagram(self, diceList: List, avg: float, dev: float):
+    def plotAsDiagram(self, diceList: List, avg: float, dev: float) -> None:
         plt.xlabel("Eye-sum")
         plt.ylabel("Probability")
         plt.grid(True)
