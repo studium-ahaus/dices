@@ -15,7 +15,7 @@ Art:
 `python -m pip install art`
 
 ## 🚀 How to use
-#### 1. Download the latest release
+#### 1. Download the latest binary
 Download the latest built binary [here](https://github.com/studium-ahaus/dices/blob/master/build/dices.zip)
 
 #### 2. Run the program
