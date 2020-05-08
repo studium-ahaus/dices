@@ -41,6 +41,8 @@ class Printer:
             else:
                 self.__appendEntries(csvFile)
 
+        print('Saved statistics to: \033[95m\033[1m' + logFile + '\033[0m')
+
     def __createOutFolder(self, path: str):
         if not os.path.isdir(path):
             try:

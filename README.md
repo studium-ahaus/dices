@@ -9,3 +9,6 @@ Mathplotlib:
 
 Numpy:   
 `python -m pip install numpy`
+
+Art:
+`python -m pip install art`

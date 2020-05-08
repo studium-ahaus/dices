@@ -13,12 +13,16 @@ class Plotter:
         self.__printer = printer
 
     def plot(self, diceList: List, throwCount: int):
+        print('✨ Calculating statistics')
+        print('')
+
         average: float = self.__getAverage(diceList)
-        print('Average: ' + str(average))
+        print('Average: \033[95m\033[1m' + str(average) + '\033[0m')
         self.__printer.setAverage(average)
 
         deviation: float = self.__getStandardDeviation(average, diceList, throwCount)
-        print('Standard deviation: ' + str(deviation))
+        print('Standard deviation: \033[95m\033[1m' + str(deviation) + '\033[0m')
+        print('')
         self.__printer.setDeviation(deviation)
 
         self.plotAsDiagram(diceList, average, deviation)

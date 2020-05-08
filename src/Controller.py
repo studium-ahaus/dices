@@ -1,5 +1,7 @@
 from typing import List
 
+from art import *
+
 from src.DiceSet import DiceSet
 from src.Plotter import Plotter
 from src.Printer import Printer
@@ -8,8 +10,11 @@ from src.Printer import Printer
 class Controller:
     __printer: Printer
 
-    def run(self):
+    def run(self) -> None:
         try:
+            header = text2art("dices")
+            print(header)
+
             self.__printer: Printer = Printer()
 
             data: List = self.__fetchInput()
@@ -23,24 +28,25 @@ class Controller:
             print('')
 
     def __fetchInput(self) -> List:
-        print('Index schema: 1, 2, 3, 4, 5, 6')
-
-        diceData: str = input("Please enter dice probabilities: ")
-        diceData: List = self.__fixDiceData(diceData)
-        self.__validateDiceData(diceData)
-        self.__printer.setProbabilities(diceData)
-
-        diceCount: str = input("Please enter a dice count: ")
-        diceCount: int = int(diceCount)
-        self.__validateCount(diceCount)
-        self.__printer.setDiceCount(diceCount)
-
-        throwCount: str = input("Please enter a throw count: ")
-        throwCount: int = int(throwCount)
-        self.__validateCount(throwCount)
-        self.__printer.setThrowCount(throwCount)
+        diceData: List = self.__getDiceData()
+        diceCount: int = self.__getDiceCount()
+        throwCount: int = self.__getThrowCount()
 
         return [diceData, diceCount, throwCount]
+
+    def __getDiceData(self) -> List:
+        diceData: str = ''
+
+        while not self.__isValidDiceData(diceData):
+            print('\033[92mPlease enter valid dice probabilities\033[0m')
+            diceData: str = input("=> \033[94m")
+            print('\033[0m')
+
+            diceData: List = self.__fixDiceData(diceData)
+
+        self.__printer.setProbabilities(diceData)
+
+        return diceData
 
     def __fixDiceData(self, diceData: str) -> List:
         return str(diceData) \
@@ -49,20 +55,45 @@ class Controller:
             .replace(')', '') \
             .split(',')
 
-    def __validateDiceData(self, fixedInput: List):
+    def __isValidDiceData(self, fixedInput: List) -> bool:
         if len(fixedInput) != 6:
-            raise Warning('Please enter exactly 6 probabilities')
+            return False
 
         total: float = 0
         for number in fixedInput:
             total += float(number)
 
         if total != 100:
-            raise Warning('The sum of probabilities has to be 100')
+            return False
 
-    def __validateCount(self, count: int):
-        if count <= 0:
-            raise Warning('A count cannot be lower than 1')
+        return True
+
+    def __getDiceCount(self) -> int:
+        diceCount: int = self.__getCount('dice')
+        self.__printer.setDiceCount(diceCount)
+
+        return diceCount
+
+    def __getCount(self, name: str) -> int:
+        count: int = 0
+
+        while not self.__isValidCount(count):
+            print('\033[92mPlease enter a valid ' + name + ' count' + '\033[0m')
+            count: str = input("=> \033[94m")
+            print('\033[0m')
+
+            count: int = int(count)
+
+        return count
+
+    def __isValidCount(self, count: int) -> bool:
+        return count >= 1
+
+    def __getThrowCount(self) -> int:
+        throwCount: int = self.__getCount('throw')
+        self.__printer.setThrowCount(throwCount)
+
+        return throwCount
 
     def __getDiceResults(self, data: List) -> List:
         return DiceSet().roll(data)
