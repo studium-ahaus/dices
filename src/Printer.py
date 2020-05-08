@@ -11,22 +11,22 @@ class Printer:
     __average: float
     __deviation: float
 
-    def setProbabilities(self, probabilities: List):
+    def setProbabilities(self, probabilities: List) -> None:
         self.__probabilities = probabilities
 
-    def setDiceCount(self, diceCount: int):
+    def setDiceCount(self, diceCount: int) -> None:
         self.__diceCount = diceCount
 
-    def setThrowCount(self, throwCount: int):
+    def setThrowCount(self, throwCount: int) -> None:
         self.__throwCount = throwCount
 
-    def setAverage(self, average: float):
+    def setAverage(self, average: float) -> None:
         self.__average = average
 
-    def setDeviation(self, deviation: float):
+    def setDeviation(self, deviation: float) -> None:
         self.__deviation = deviation
 
-    def print(self):
+    def print(self) -> None:
         thisFile: str = os.path.dirname(os.path.realpath(__file__))
 
         outFolder: str = thisFile + '/../out/'
@@ -43,14 +43,14 @@ class Printer:
 
         print('Saved statistics to: \033[95m\033[1m' + logFile + '\033[0m')
 
-    def __createOutFolder(self, path: str):
+    def __createOutFolder(self, path: str) -> None:
         if not os.path.isdir(path):
             try:
                 os.mkdir(path)
             except OSError:
                 raise Warning("Creation of the output directory failed")
 
-    def __writeToNewFile(self, csvFile: TextIO):
+    def __writeToNewFile(self, csvFile: TextIO) -> None:
         fieldnames: List = ['entryDate', 'probabilities', 'diceCount', 'throwCount', 'average', 'deviation']
         writer: csv.DictWriter = csv.DictWriter(csvFile, fieldnames=fieldnames, delimiter=';')
 
@@ -64,10 +64,10 @@ class Printer:
             'deviation': self.__numToString(self.__deviation)
         })
 
-    def __numToString(self, num):
+    def __numToString(self, num) -> str:
         return str(num).replace('.', ',')
 
-    def __appendEntries(self, csvFile: TextIO):
+    def __appendEntries(self, csvFile: TextIO) -> None:
         writer: csv.writer = csv.writer(csvFile)
         writer.writerow([
             str(datetime.now()),

@@ -9,10 +9,10 @@ from src.Printer import Printer
 class Plotter:
     __printer: Printer
 
-    def __init__(self, printer: Printer):
+    def __init__(self, printer: Printer) -> None:
         self.__printer = printer
 
-    def plot(self, diceList: List, throwCount: int):
+    def plot(self, diceList: List, throwCount: int) -> None:
         print('✨ Calculating statistics')
         print('')
 
@@ -39,7 +39,7 @@ class Plotter:
             / (throwCount - 1)
         )
 
-    def plotAsDiagram(self, diceList: List, avg: float, dev: float):
+    def plotAsDiagram(self, diceList: List, avg: float, dev: float) -> None:
         lst: np.ndarray = np.arange(0, len(diceList[0]) * 6, 0.001)
         gauss: List = self.__calculateGaussCurve(lst, avg, dev)
 
