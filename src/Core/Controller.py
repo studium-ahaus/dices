@@ -2,9 +2,9 @@ from typing import List
 
 from art import *
 
-from Core.DiceSet import DiceSet
-from Core.Plotter import Plotter
-from Core.Printer import Printer
+from src.Core.DiceSet import DiceSet
+from src.Core.Plotter import Plotter
+from src.Core.Printer import Printer
 
 
 class Controller:
