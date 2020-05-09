@@ -49,7 +49,7 @@ class Printer:
             try:
                 os.mkdir(path)
             except OSError:
-                raise Warning("Creation of the output directory failed")
+                raise Warning("\033[1m\033[91mCreation of the output directory failed\033[0m")
 
     def __write_to_new_file(self, csv_file: TextIO) -> None:
         fieldnames: List = ['entryDate', 'probabilities', 'diceCount', 'throwCount', 'average', 'deviation']
