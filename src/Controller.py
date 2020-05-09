@@ -39,7 +39,8 @@ class Controller:
         dice_data: str = ''
 
         while not self.__is_valid_dice_data(dice_data):
-            print('\033[92mPlease enter valid dice probabilities\033[0m')
+            print('\033[92mPlease enter valid dice probabilities in %\033[0m')
+            self.__print_example_schema('10, 10, 10, 20, 25, 25')
             dice_data: str = input("=> \033[94m")
             print('\033[0m')
 
@@ -48,6 +49,11 @@ class Controller:
         self.__printer.set_probabilities(dice_data)
 
         return dice_data
+
+    def __print_example_schema(self, example: str):
+        print('\x1b[90m\x1b[3mExample schema:')
+        print('=> ' + example + '\033[0m')
+        print('')
 
     def __fix_dice_data(self, dice_data: str) -> List:
         return str(dice_data) \
@@ -80,6 +86,7 @@ class Controller:
 
         while not self.__is_valid_count(count):
             print('\033[92mPlease enter a valid ' + name + ' count' + '\033[0m')
+            self.__print_example_schema('153')
             count: str = input("=> \033[94m")
             print('\033[0m')
 
