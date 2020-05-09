@@ -15,11 +15,11 @@ Art:
 `python -m pip install art`
 
 ## 🚀 How to use
-#### 1. Download the latest binary
-Download the latest built binary [here](https://github.com/studium-ahaus/dices/blob/master/build/dices.zip)
+#### 1. Download the latest version
+Download the latest release [here](https://github.com/studium-ahaus/dices/releases)
 
 #### 2. Run the program
-Run the program using the command ```python dices.zip```.  
+Run the program using the command ```python run.py```.  
 Continue to configure and submit the wanted settings.  
 After submitting, the calculated results will be put out to the console and graph.
 
