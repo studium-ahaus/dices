@@ -29,7 +29,7 @@ class Printer:
 
     def print(self) -> None:
         this_dir: str = os.path.dirname(os.path.realpath(__file__))
-        out_folder: str = this_dir + '/../../out/'
+        out_folder: str = this_dir + '/../out/'
 
         self.__create_out_folder(out_folder)
 
